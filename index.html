@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<body>
+<a href="intent://authorize/#Intent;scheme=flynch;package=com.julienkay.flynch;S.msg_from_browser=Launched%20from%20Browser;end">Test</a>
+<div id="cont1">
+	    <p id="accessToken"></p>
+<!--	<input type="button" onclick="buttonClick()" value="Copy To Clipboard" id="button1"> -->
+</div>
+
+
+<script>
+
+function buttonClick() {
+	var text = document.location.hash;
+	navigator.clipboard.writeText(text);
+}
+
+function myFunction() {
+  var hash = document.location.hash;
+  if (hash != '') {
+    // return 'Your user access token: ' + hash;
+    var text = document.location.hash.substr(1); //url part after the '#' without the '#'
+    navigator.clipboard.writeText(text);
+    return "Thank you for authorizing Flynch. Your access token has been copied to your clipboard.\n Please go back to the Flynch app to paste the code in your settings."
+  } else {
+  	document.getElementById("cont1").style.visibility="hidden";  
+  	return '';
+  }
+}
+document.getElementById("accessToken").innerHTML = myFunction(); 
+</script>
+
+</body>
+</html>
